@@ -1,4 +1,5 @@
 # React + Node Starter
+
 _for [Heroku](https://www.heroku.com/) deployment_
 
 ## Overview
@@ -12,17 +13,26 @@ This is a simple starter to get you up and running for React projects. This is i
 
 ## Running
 
-Install dependencies: `$ npm install` or `$ yarn`
+Install dependencies:
 
-Fire up a development server: `$ npm run dev`
+```
+npm install
+```
+
+Start server:
+
+```
+npm run dev
+```
 
 Once the server is running, you can visit `http://localhost:3000/`
 
 ## File layout
 
 - **Frontend React**
-    - The top level application Container is in `frontend/containers/AppContainer.js`
-    - CSS styles are in `frontend/assets/stylesheets/base.scss`
+    - Entry point is `frontend/index.js`
+    - The top level `<App />` component is in is in `frontend/component/App.js`
+    - CSS styles are in `frontend/stylesheets/style.css`
 - **Backend Express**
     - Entry point is `server.js`
     - API routes are under `backend/routes.js`
@@ -53,9 +63,3 @@ $ heroku open
 Heroku will follow the `build` command in your `package.json` and compile assets with `webpack.prod.config.js`. It runs the Express web server in `server.js`.
 
 If you're unfamiliar with Heroku deployment (or just need a refresher), they have a really great walkthrough [here](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction).
-
-## Running on Glitch
-
-1. Go to https://glitch.com/edit/#!/horizons-hackathon-react and click
-  `Remix this 🎤`
-1. Click `Show` at the top to preview your app!
