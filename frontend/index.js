@@ -1,13 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { configureStore, history } from './store/configureStore';
-import Root from './containers/Root';
 
-import './assets/stylesheets/base.scss';
+import './assets/stylesheets/style.css';
 
-const store = configureStore();
+import App from './components/App';
 
 render(
-    <Root store={store} history={history} />,
+    <App />,
     document.getElementById('root')
 );
