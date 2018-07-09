@@ -1,6 +1,6 @@
-# React + Node Starter
+# React & Express Start App
 
-_for [Heroku](https://www.heroku.com/) deployment_
+Perfect for **Hackathons** 🎉 _ready for [Heroku](https://www.heroku.com/) deployment_
 
 ## Overview
 
