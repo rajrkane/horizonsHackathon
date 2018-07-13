@@ -18,3 +18,9 @@ class App extends React.Component {
 }
 
 export default App;
+
+//UserList.jsx, User.jsx,
+//UserList will have a send request button below each person
+
+
+//<UserList />
