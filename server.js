@@ -20,10 +20,13 @@ const User = mongoose.model('User', {
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 
-//Path for registration
-//render registration
 app.post('/user/create', function(req, res) {
-  new User(req.body)
+  new User({
+    name: req.body.name,
+    age: req.body.age,
+    gender: req.body.gender,
+    requestStatus: false
+  })
     .save()
     .then((doc) => res.json({id: doc.id}))
     .catch((err) => res.status(500).end(err.message))

@@ -8,23 +8,6 @@ export default class User extends React.Component {
     requestStatus: false
   }
 
-  onNameChange = (e) => {
-    this.setState({
-      name: e.target.value
-    })
-  }
-
-  onAgeChange = (e) => {
-    this.setState({
-      age: e.target.value
-    })
-  }
-
-  onGenderChange = (e) => {
-    this.setState({
-      gender: e.target.value
-    })
-  }
 
   onSubmit = (e) => {
 
@@ -39,7 +22,7 @@ export default class User extends React.Component {
     }
   }
 
-  render = () => {
+  render() {
     <div>
       User
       <button onClick={() => this.toggleRequest()}>Request</button>

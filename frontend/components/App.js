@@ -1,4 +1,5 @@
 import React from 'react';
+import Register from './Register'
 
 class App extends React.Component {
     constructor(props) {
@@ -8,10 +9,7 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <h1>Welcome to React</h1>
-                <p>
-                    This is the App component.
-                </p>
+            <Register />
             </div>
         );
     }

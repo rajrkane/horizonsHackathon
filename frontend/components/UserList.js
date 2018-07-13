@@ -12,9 +12,9 @@ export default class UserList extends React.Component {
     .then(res => res.json())
     .then(items => {this.setState({items})})
     .catch(err => console.log('error', err))
-
   }
 
+  //function called when click on button to view individual user
   viewUser = (e) => {
     fetch('/user/:id', {
       method: 'GET',
