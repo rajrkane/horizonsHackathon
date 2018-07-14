@@ -1,5 +1,7 @@
 import React from 'react';
 
+// Home page.
+
 // Redirect to this page from register/login. Display list of users
 // who do not have a connection.
 
@@ -8,6 +10,7 @@ class UserList extends React.Component {
     items: []
   }
 
+  // GET request for users after page renders.
   componentDidMount() {
     fetch('/users', {
       method: 'GET',
@@ -45,8 +48,9 @@ class UserList extends React.Component {
       <div>
         {this.state.items.filter(u => u.connectionStatus === false).map(item => {
           <h2>User: {item.name}</h2>
-          <button onClick={() => null}>View User</button>
+          <button onClick={() => this.viewUser}>View User</button>
         })}
+        <button onClick={() => null}>Manage requests</button>
       </div>
     )
   }
