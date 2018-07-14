@@ -6,7 +6,7 @@ class Register extends Component {
     name: '',
     age: '',
     gender: '',
-    users: []
+    // users: []
   }
   onNameChange = (e) => {
     this.setState({
@@ -24,18 +24,11 @@ class Register extends Component {
     })
   }
 
-  removeUsers = () => {
-    this.setState({
-      name: '',
-      age: '',
-      gender: ''
-    })
-  }
-
   onClick = (e) => {
     const {name, age, gender} = this.state;
     let requestStatus = false;
-    this.removeContacts()
+    let connectionStatus = false;
+    let requestsFrom = [];
     fetch('/user/create', {
       method: 'POST',
       headers: {
@@ -51,44 +44,45 @@ class Register extends Component {
       })
     }).then((res)=> {
       if(res.status === 200) {
-        console.log(res)
-        console.log(name + ' added to users.')
+        console.log(res);
+        console.log(name + ' added to users.');
+        this.props.app.setState({activeComponent: 'list'});
       }else {
         console.log(res.status);
       }
     }).catch((err) => {
         console.log('Error in registering: ', err);
     });
-    fetch('/user', {
-      method: 'GET',
-    }).then(res => res.json())
-    .then(users => this.setState({users: users}))
-    .catch((err) => {
-      console.log(err)
-    });
-  };
+  //   fetch('/users', {
+  //     method: 'GET',
+  //   }).then(res => res.json())
+  //   .then(users => this.setState({users: users}))
+  //   .catch((err) => {
+  //     console.log(err)
+  //   });
+  // };
 
   render() {
-    const renderContacts = () => {
-      return this.state.users.map(u => {
-        return (
-          <div>
-            <List>
-              <List.Item>
-                <List.Icon name='users' />
-                <List.Content>{u.name}</List.Content>
-              </List.Item>
-              <List.Item>
-                <List.Content>{u.age}</List.Content>
-              </List.Item>
-              <List.Item>
-                <List.Content>{u.gender}</List.Content>
-              </List.Item>
-            </List>
-          </div>
-        )
-      })
-    }
+    // const renderContacts = () => {
+    //   return this.state.users.map(u => {
+    //     return (
+    //       <div>
+    //         <List>
+    //           <List.Item>
+    //             <List.Icon name='users' />
+    //             <List.Content>{u.name}</List.Content>
+    //           </List.Item>
+    //           <List.Item>
+    //             <List.Content>{u.age}</List.Content>
+    //           </List.Item>
+    //           <List.Item>
+    //             <List.Content>{u.gender}</List.Content>
+    //           </List.Item>
+    //         </List>
+    //       </div>
+    //     )
+    //   })
+    // }
 
     return (
       <div align="center">
@@ -97,7 +91,7 @@ class Register extends Component {
         <p><Input value={this.state.age} onChange={this.onAgeChange} className="field" placeholder="age"/></p>
         <p><Input value={this.state.gender} onChange={this.onGenderChange} className="field" placeholder="gender"/></p>
         <Button onClick={this.onClick} className="btn">Register</Button>
-        <div>List of Contacts{renderContacts()}</div>
+        {/* <div>List of Contacts{renderContacts()}</div> */}
       </div>
     );
   }

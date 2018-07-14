@@ -22,7 +22,7 @@ class UserList extends React.Component {
 
   //function called when click on button to view individual user
   viewUser = (e) => {
-    fetch('/user/:id', {
+    fetch('/users/:id', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -48,7 +48,8 @@ class UserList extends React.Component {
       <div>
         {this.state.items.filter(u => u.connectionStatus === false).map(item => {
           <h2>User: {item.name}</h2>
-          <button onClick={() => this.viewUser}>View User</button>
+          <button onClick={() => this.viewUser}>View user</button>
+          <button onClick={() => null}>Send request</button>
         })}
         <button onClick={() => null}>Manage requests</button>
       </div>
