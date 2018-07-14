@@ -46,7 +46,8 @@ class Register extends Component {
         age,
         birthday,
         requestStatus,
-        connectionStatus
+        connectionStatus,
+        requestsFrom
       })
     }).then((res)=> {
       if(res.status === 200) {

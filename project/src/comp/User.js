@@ -3,36 +3,42 @@ import React from 'react';
 // Page of specific user (specified by id in query).
 // Extract data from MLAB.
 
-export default class User extends React.Component {
+class User extends React.Component {
+  //The state belongs to the user whose profile is being viewed,
+  // NOT the user in control. So, requestStatus is whether the would-be
+  // recipient's request is currently active.
+
+  //Need to connect state with MLAB. Every setState should update MLAB.
   state = {
     name: '',
     age: 0,
     gender: '',
     requestStatus: false,
-    connectionStatus: false
+    connectionStatus: false,
+    requestsFrom: []
   }
 
-//requestStatus is whether the user has an active request (not anything about recipient).
-  onSubmit = (e) => {
+  handleRequest = (e) => {
+    // Execute the following code only if recipient does not have an
+    // active connection.
 
-  }
+    // First, update the recipient.
+    let requestsFromCopy = this.state.requestsFrom.slice();
+    requestsFromCopy.push(/*user in control (object) */);
+    this.setState({
+      requestsFrom: requestsFromCopy
+    });
 
-  toggleRequest = () => {
-    // Execute the following code only if recipient does not have a connection.
-    this.setState(
-      {requestStatus: !requestStatus}
-    )
-    if (this.state.requestStatus) {
-      this.onSubmit()
-    }
-  }
+    // Second, update the user in control.
+    // requestStatus: !requestStatus
+  };
 
   render() {
     <div>
       User
-      <button onClick={() => this.toggleRequest()}>Request</button>
+      <button onClick={() => this.handleRequest()}>Request</button>
     </div>
   }
 }
 
-//request status true means there is a request
+export default User;

@@ -12,11 +12,9 @@ const User = mongoose.model('User', {
   age: Number,
   gender: String,
   requestStatus: false,
-  connectionStatus: false
+  connectionStatus: false,
+  requestsFrom: []
 })
-
-//false request status means the person is available
-//true means he/she has an active request
 
 app.use(express.static(path.join(__dirname, 'build')));
 app.use(bodyParser.json());
@@ -27,7 +25,8 @@ app.post('/user/create', function(req, res){
     age: req.body.age,
     gender: req.body.gender,
     requestStatus: false,
-    connectionsStatus: false
+    connectionsStatus: false,
+    requestsFrom: []
   })
     .save()
     .then((doc) => res.json({id:doc.id}))
