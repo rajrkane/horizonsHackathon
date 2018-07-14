@@ -2,6 +2,10 @@ import React from 'react';
 
 // Page of specific user (specified by id in query).
 // Extract data from MLAB.
+// Need to add functionality:
+    // When user in control has active request, he/she cannot send
+    // another request. This needs to be done without altering any
+    // property of other users.
 
 class User extends React.Component {
   //The state belongs to the user whose profile is being viewed,

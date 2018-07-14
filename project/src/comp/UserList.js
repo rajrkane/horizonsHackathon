@@ -21,7 +21,7 @@ class UserList extends React.Component {
   }
 
   //function called when click on button to view individual user
-  viewUser = (e) => {
+  viewUser = (user) => {
     fetch('/users/:id', {
       method: 'GET',
       headers: {
@@ -42,14 +42,26 @@ class UserList extends React.Component {
     })
   }
 
+  sendRequest = (user) => {
+    // Execute following code only if user.requestStatus is false.
+    if (!user.requestStatus) {
+      user.requestStatus = true;
+      // Update requestStatus of user in control to true
+      user.requestsFrom.push(/*the user in control*/)
+
+    }
+
+    // Execute only if user.requestStatus is true.
+  }
+
   // Render all users who do not have a connection.
   render() {
     return (
       <div>
-        {this.state.items.filter(u => u.connectionStatus === false).map(item => {
-          <h2>User: {item.name}</h2>
-          <button onClick={() => this.viewUser}>View user</button>
-          <button onClick={() => null}>Send request</button>
+        {this.state.items.filter(u => u.connectionStatus === false).map(user => {
+          <h2>User: {user.name}</h2>
+          <button onClick={() => this.viewUser(user)}>View user</button>
+          <button onClick={() => this.sendRequest(user)}>Send request</button>
         })}
         <button onClick={() => null}>Manage requests</button>
       </div>
