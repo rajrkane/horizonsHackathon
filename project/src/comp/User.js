@@ -8,9 +8,9 @@ export default class User extends React.Component {
     name: '',
     age: 0,
     gender: '',
-    requestStatus: false
+    requestStatus: false,
+    connectionStatus: false
   }
-  // connectionStatus: false
 
 //requestStatus is whether the user has an active request (not anything about recipient).
   onSubmit = (e) => {

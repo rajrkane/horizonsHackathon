@@ -11,7 +11,8 @@ const User = mongoose.model('User', {
   name: String,
   age: Number,
   gender: String,
-  requestStatus: false
+  requestStatus: false,
+  connectionStatus: false
 })
 
 //false request status means the person is available
@@ -25,7 +26,8 @@ app.post('/user/create', function(req, res){
     name: req.body.name,
     age: req.body.age,
     gender: req.body.gender,
-    requestStatus: false
+    requestStatus: false,
+    connectionsStatus: false
   })
     .save()
     .then((doc) => res.json({id:doc.id}))

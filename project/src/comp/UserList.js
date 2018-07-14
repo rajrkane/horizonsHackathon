@@ -25,7 +25,8 @@ class UserList extends React.Component {
         name,
         age,
         gender,
-        requestStatus
+        requestStatus,
+        connectionStatus
       })
     }).then((res)=>{
       if (res.status ===200) console.log(res)
