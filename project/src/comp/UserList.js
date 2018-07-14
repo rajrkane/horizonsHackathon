@@ -1,10 +1,16 @@
 import React from 'react';
 
-export default class UserList extends React.Component {
+// Home page.
+
+// Redirect to this page from register/login. Display list of users
+// who do not have a connection.
+
+class UserList extends React.Component {
   state = {
     items: []
   }
 
+  // GET request for users after page renders.
   componentDidMount() {
     fetch('/users', {
       method: 'GET',
@@ -25,7 +31,9 @@ export default class UserList extends React.Component {
         name,
         age,
         gender,
-        requestStatus
+        requestStatus,
+        connectionStatus,
+        requestsFrom
       })
     }).then((res)=>{
       if (res.status ===200) console.log(res)
@@ -34,16 +42,19 @@ export default class UserList extends React.Component {
     })
   }
 
+  // Render all users who do not have a connection.
   render() {
     return (
       <div>
-        {this.state.items.map(item => {
-          <h2>User</h2>
-          <button onClick={() => null}>View User</button>
+        {this.state.items.filter(u => u.connectionStatus === false).map(item => {
+          <h2>User: {item.name}</h2>
+          <button onClick={() => this.viewUser}>View User</button>
         })}
+        <button onClick={() => null}>Manage requests</button>
       </div>
     )
   }
 }
 
 //<User />
+export default UserList;
