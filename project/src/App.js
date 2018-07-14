@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import CreateContact from './comp/CreateContact'
+// import CreateContact from './comp/CreateContact'
+import Register from './comp/Register';
 
 class App extends Component {
-  // state ={
-  //   activeComponent: 'create'
-  // }
+  state ={
+    activeComponent: 'create'
+  }
+
+  //activeComponent specifies which page to display
 
   render() {
     // let show
@@ -20,7 +23,8 @@ class App extends Component {
 
     return (
     <div>
-      <CreateContact />
+      <p>Hi rendering</p>
+      <Register />
     </div>
     );
   }
