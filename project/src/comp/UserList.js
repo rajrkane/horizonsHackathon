@@ -1,5 +1,8 @@
 import React from 'react';
 
+// Redirect to this page from register/login. Display list of users
+// who do not have a connection.
+
 class UserList extends React.Component {
   state = {
     items: []
@@ -25,7 +28,9 @@ class UserList extends React.Component {
         name,
         age,
         gender,
-        requestStatus
+        requestStatus,
+        connectionStatus,
+        requestsFrom
       })
     }).then((res)=>{
       if (res.status ===200) console.log(res)
@@ -34,11 +39,12 @@ class UserList extends React.Component {
     })
   }
 
+  // Render all users who do not have a connection.
   render() {
     return (
       <div>
-        {this.state.items.map(item => {
-          <h2>User</h2>
+        {this.state.items.filter(u => u.connectionStatus === false).map(item => {
+          <h2>User: {item.name}</h2>
           <button onClick={() => null}>View User</button>
         })}
       </div>
